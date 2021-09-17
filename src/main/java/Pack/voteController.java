@@ -30,6 +30,11 @@ public class voteController {
         String uid = request.getParameter("uname");
         String pw = request.getParameter("pw");
 
+        IsAdmin isAdmin = new IsAdmin();
+        if (isAdmin.isAdminCHK(uid)) {
+            model.addAttribute("isAdmin", true);
+        }
+
         String sql = "select * from user where uid='" + uid + "' and pw='" + pw + "'";
 
         try {
@@ -74,7 +79,7 @@ public class voteController {
 
 
     @RequestMapping("/vote")
-    public String vote(HttpSession httpSession, HttpServletRequest request, HttpServletResponse response) {
+    public String vote(Model model, HttpSession httpSession, HttpServletRequest request, HttpServletResponse response) {
 
         //String uid = (String)httpSession.getAttribute("uid");
         String uid = user.getUID(); //세션 대신 사용가능(Bean 이용)
