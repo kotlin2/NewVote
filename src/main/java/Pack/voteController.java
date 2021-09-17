@@ -85,7 +85,7 @@ public class voteController {
             return "AlreadyView";
         }
 
-        sql = "update user set CID = ? where UID = ?";
+        sql = "update user set CID = ?, isVoted = 1 where UID = ?";
 
         try {
             DBConn dBconn = new DBConn();
