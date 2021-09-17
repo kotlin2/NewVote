@@ -37,7 +37,7 @@ public class IsVoted {
                 e.printStackTrace();
             }
         }
-        return false;
+        return true;
     }
 
 }
